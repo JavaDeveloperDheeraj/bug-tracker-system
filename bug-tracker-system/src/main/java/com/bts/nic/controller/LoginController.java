@@ -23,6 +23,8 @@ public class LoginController {
     private PasswordEncoder passwordEncoder;
     
     @Autowired TaskManagerService taskManagerService;
+    
+   
 
 
     @PostMapping("/register")
@@ -72,16 +74,16 @@ public class LoginController {
 
             switch (role) {
                 case "DEVELOPER":
-                    handleDeveloperLogin(user.get().getDeveloper().getDeveloperId());
+                	loginService.handleDeveloperLogin(user.get().getDeveloper().getDeveloperId());
                     break;
 
                 case "ASSIGNER":
                     Integer assignerId = user.get().getUserId(); 
-                    handleAssignerLogin(assignerId);
+                    loginService.handleAssignerLogin(assignerId);
                     break;
 
                 case "ADMIN":
-                    handleAdminLogin();
+                	loginService.handleAdminLogin();
                     break;
 
                 default:
@@ -93,20 +95,6 @@ public class LoginController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
     }
 
-    private void handleDeveloperLogin(Integer developerId) {
-        List<TaskManager> tasks = taskManagerService.getTasksForDeveloper(developerId);
-       
-       
-    }
-
-    private void handleAssignerLogin(Integer assignerId) {
-        List<TaskManager> tasks = taskManagerService.getTasksForAssigner(assignerId);
-        
-    }
-
-    private void handleAdminLogin() {
-        List<TaskManager> tasks = taskManagerService.getAllTasks();
-       
-    }
+   
     
 }
