@@ -1,0 +1,95 @@
+ <!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="keywords" content="">
+	<meta name="description" content="General Administration Department, Govt. of Bihar">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title> Bug Tracker System</title>
+ 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+ 	<link rel="icon" type="image/ico" th:href="@{/images/icon.png}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/bootstrap.min.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/balooChetanF.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/robotoF.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/sansF.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/fontawesome.min.css}"></link>	
+	<link rel="stylesheet" type="text/css" th:href="@{/css/global/datatables.min.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/local/style.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/local/menu.style.css}"></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/local/styless.css}"></link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+	
+	    <script type="text/javascript" th:src="@{/js/global/angular.min.js}"></script>
+	   
+	   	<script type="text/javascript" th:src="@{/ctrl/taskManagerCtrl.js}"></script>
+		
+		<link rel="stylesheet" type="text/css" th:href="@{/css/local/menu.style.css}"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	    
+	    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+
+</head>
+
+  <header>
+	<div th:replace="appUtils :: header"></div>
+</header> 
+
+   <topmenu>
+	<div th:replace="appUtils :: topmenu"></div> 
+	<span id="kks"></span>
+</topmenu> 
+ 
+ 
+ 
+<section id="main-content">
+  <div class="container" style="max-width: 100%; min-height: 100%;">
+    <div class="row">
+      <!-- Left Panel -->
+       <div class="col-md-2" style="padding-left: 0px !important;">
+      	<div th:replace="appUtils :: lPanel"> </div>
+      </div> 
+      <div class="col-md-10"  id="contentPage">
+      
+        <!-- Main Content -->
+        <div class="index_overview" th:insert="${pageName} :: ${section}">
+        
+        </div>
+     	</div>
+     	<!-- Minister box -->
+      <!-- <div class="col-md-2">
+        
+      </div> -->
+      
+      <!-- Right Panel -->      
+      <!-- <div class="col-md-2">
+        	<div th:replace="AppUtils :: rPanel"></div>
+      </div> -->
+      	
+      
+    </div>
+  </div>
+  
+</section>
+<!-- SSSSSSSSSSSSSSSSSSSSSSCCCCCCCCCCCCCCCCCCRRRRRRRRRRRRRRRRRIIIIIIIIIIIIIIIPPPPPPPPPPPPPPPPPPPTTTTTTTTTTTT -->
+	<script type="text/javascript" th:src="@{/js/global/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/jquery.dataTables.min.js}"></script>
+ 	<script type="text/javascript" th:src="@{/js/global/script.js}"></script>
+ 	<script type="text/javascript" th:src="@{/js/global/table2excel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/popper.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/ui-bootstrap-tpls-3.0.6.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/jquery.slim.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/bootstrap.bundle.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/fontawesome.js}"></script>
+	<script type="text/javascript" th:src="@{/js/global/fontawesome.min.js}"></script>
+
+
+  <footer th:replace="appUtils :: footer">
+
+</footer>
+
+</html>

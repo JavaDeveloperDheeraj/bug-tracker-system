@@ -1,0 +1,68 @@
+@charset "utf-8";
+/*--------------------------------------------------------------------------------
+	Responsive Design
+--------------------------------------------------------------------------------*/
+/*Tablet*/
+@media (min-width: 992px){
+ 
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+	
+}
+
+/*Only Desktop*/
+@media (min-width: 767px){
+.navbar-expand-md .navbar-nav .nav-link {padding-right: .9rem; padding-left: .9rem;}
+.dropdown:hover>.dropdown-menu {display: block;}	
+.dropdown .dropdown-menu a:hover{color: #f16e1e;}	
+#main-menu .navbar-light .navbar-nav .nav-link{padding-left: 12px; padding-right: 12px;}	
+#main-menu .dropdown .dropdown-menu .dropdown-item{font-size: 15px;}	
+#main-menu .dropdown .dropdown-menu .dropdown-item:hover{background: transparent; color: #000000;}	
+#main-menu .navbar .navbar-brand{display: none;}	
+}
+
+ 
+
+
+/*Small Device*/
+@media (max-width: 767px){
+.top-header{position: relative;}	
+.bx-controls-direction{display: none;}
+header .logo-name h1{font-size: 22px; margin-top: 5px;}	
+#top-links ul{display: block;}
+#top-links ul li{margin: 5px 0;}
+.navbar-light .navbar-toggler {color: rgba(0,0,0,.2); border-color: transparent;}
+.navbar-light .navbar-toggler:focus{outline: none;}	
+.navbar-light .navbar-brand{color: #ffffff;}
+#banner .slider-content h2{font-size: 16px;}	
+footer img{margin: 3px 0;}		
+}
+
+/*Very Small Device*/
+@media (max-width: 320px){
+
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 2rem; /* Increase padding */
+    max-width: 800px; /* Increase max width */
+    margin: 0 auto; /* Center the card horizontally */
+}
+
+.cards {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 2rem; /* Increase padding */
+    max-width: 1400px; /* Increase max width */
+    margin: 0 auto; /* Center the card horizontally */
+}
+
+.card-header {
+    background-color: rgb(81, 81, 255);
+    border-bottom: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: #fff;
+    padding: 1rem 2rem; /* Increase padding */
+}
+
+.card-body {
+    padding: 2rem; /* Increase padding */
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Adjust margin */
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-right: 1.25rem; /* Increase margin */
+    flex: 0 0 40%; /* Adjust width */
+    max-width: 40%; /* Adjust width */
+}
+
+.form-control,
+.form-control-file {
+    flex: 1;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+    background-color: rgb(0, 0, 128);
+    border-color: #007bff;
+    padding: 1rem 1.5rem; /* Increase padding */
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+
+

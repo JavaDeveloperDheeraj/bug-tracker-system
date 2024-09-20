@@ -1,0 +1,27 @@
+<th:block xmlns:th="https://www.thymeleaf.org">
+  <!-- Define the WelcomePage Fragment -->
+  <div th:fragment="WelcomePage">
+  <div th:if="${session.user != null}" th:replace="::lPanel"></div>
+    <div data-ng-app="app" data-ng-controller="WelcomeCtrl">
+     <div class="container-fluid">
+        <div class="row">
+          <!-- Left Panel -->
+          <div th:if="${session.user != null}" class="col-md-3">
+              <div th:replace="::lPanel"></div>
+          </div>
+          
+          <!-- Main Content Area -->
+          <main class="col-md-9 content">
+            <h2>Welcome to the Dashboard</h2>
+            <p>Here is your personalized dashboard content...</p>
+          </main>
+        </div>
+      </div>
+    </div> 
+    <!-- Include AngularJS Controller -->
+    <script type="text/javascript" th:src="@{/ctrl/welcome-ctrl.js}"></script>
+  </div>
+</th:block>
+
+
+  

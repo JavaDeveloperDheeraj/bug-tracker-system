@@ -1,0 +1,491 @@
+@media (min-width: 1281px) {
+    /* CSS */
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .Ayushman_logo h3 {
+        top: 0px;
+    }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .Ayushman_logo h6 {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .Ayushman_logo h3 {
+        left: 0;
+        top: 0;
+    }
+    .logo_mobile4 img {
+        width: 120px;
+        position: relative;
+        top: 12px;
+    }
+    .p-5 {
+        padding: 2rem !important;
+    }
+    .width_set tr td {
+        width: auto;
+    }
+    .ipad_set {
+        position: relative;
+        left: 24px;
+    }
+    .set_img img {
+        width: 50%;
+    }
+    .camera .fa-camera {
+        font-size: 55px;
+    }
+    .card1 {
+        height: auto;
+    }
+    .mobile-font-size .control-label {
+        font-size: 12px;
+    }
+    .uan_heading {
+        font-size: 20px;
+    }
+    .uan_number p {
+        font-size: 16px;
+    }
+    .user-rating-list ul li {
+        margin: 0;
+    }
+    .user-rating-list ul .excellent-star,
+    .user-rating-list ul .V-good-star,
+    .user-rating-list ul .good-star,
+    .user-rating-list ul .average-star,
+    .user-rating-list ul .poor-star {
+        padding: 0px 18px;
+        font-size: 40px;
+    }
+    .user-rating-list ul .excellent a,
+    .user-rating-list ul .V-good a,
+    .user-rating-list ul .good a,
+    .user-rating-list ul .average a,
+    .user-rating-list ul .poor a {
+        padding: 4px 16px;
+        font-size: 14px;
+    }
+    .Ayushman_logo h5 {
+        line-height: 18px;
+        font-size: 12px;
+    }
+    .mobile-font-size .control-label {
+        font-size: 12px;
+        padding: 0;
+        margin-bottom: 0px;
+    }
+    .issue_date p {
+        font-size: 10px;
+    }
+    .uan-height-set {
+        min-height: 390px;
+    }
+    .container {
+        padding: 0;
+    }
+    .top_nav li a {
+        font-size: 12px;
+        padding: 8px 6px;
+    }
+    .brands_next {
+        left: 17%;
+    }
+    .title-line-8-a {
+        width: 82%;
+    }
+    .carousel .carousel-indicators {
+        bottom: -20px;
+    }
+    .title-line-8 {
+        width: 100%;
+    }
+    .border-right {
+        border: 0 !important;
+    }
+    .col-sm-12 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    .white-button-slider a {
+        font-size: 10px;
+    }
+    .carousel-caption_1 {
+        left: -18%;
+    }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .Ayushman_logo h3 {
+        font-weight: 600;
+    }
+    .Ayushman_logo h3 {
+        text-align: center;
+    }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+    /* CSS */
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .p-5 {
+        padding: 1rem !important;
+    }
+    .pre_name {
+        top: -12px;
+    }
+    .logo_mobile {
+        position: relative;
+        /* left: 10%; */
+        margin-bottom: 5px;
+    }
+    .Ayushman_logo h3 {
+        left: 0;
+        top: 0;
+        font-size: 20px;
+    }
+    .preview .mobile_table {
+        width: 150%;
+    }
+    .mobile-font-size .control-label {
+        font-size: 10px;
+        padding: 0;
+        margin-bottom: 0px;
+    }
+    .uan_heading {
+        font-size: 16px;
+    }
+    .uan_number p {
+        font-size: 14px;
+    }
+    .mobile-font-size {
+        position: relative;
+        left: 8px;
+    }
+    .card1 {
+        height: auto;
+    }
+    .logo img {
+        left: 0px;
+    }
+    /* .Ayushman_logo h6{
+		position: absolute;
+		left: 98px;
+	} */
+    .logo_mobile4 img {
+        position: relative;
+        top: -72px;
+    }
+    .width_set .table {
+        width: 135%;
+        font-size: 14px;
+    }
+    .nduw_mobile h5 {
+        font-size: 10px;
+        line-height: 14px;
+    }
+    .uan_number strong {
+        /* display:block; */
+    }
+    /*
+	.issue_date{
+		margin-bottom: 15px;
+		margin-top: 15px;
+	}
+	*/
+    .uan-height-set {
+        min-height: 310px;
+    }
+    .issue_date p {
+        font-size: 10px;
+    }
+    .issue_date p strong {
+        font-size: 10px;
+    }
+    .padding_mobile {
+        padding: 0;
+    }
+    .postal_address {
+        font-size: 9px;
+    }
+    .ipad_set {
+        left: 8px;
+        position: relative;
+        width: 96%;
+    }
+    .preview-table-border>.table-bordered td,
+    .table-bordered th {
+        padding: 4px;
+    }
+    .right_sign_img img {
+        width: 40px;
+    }
+    .user-rating-list ul .excellent-star,
+    .user-rating-list ul .V-good-star,
+    .user-rating-list ul .good-star,
+    .user-rating-list ul .average-star,
+    .user-rating-list ul .poor-star {
+        padding: 0 20px;
+        font-size: 24px;
+    }
+    .user-rating-list ul .excellent a {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+    .user-rating-list ul .V-good a {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+    .user-rating-list ul .good a {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+    .user-rating-list ul .average a {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+    .user-rating-list ul .poor a {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+    .user-rating-list ul li {
+        margin: 0;
+    }
+    .margin-top-bottom {
+        padding-top: 0;
+    }
+    .contact-us-heading {
+        padding: 0px;
+    }
+    .carousel-caption_1 {
+        right: -36%;
+        bottom: 8px;
+        left: 13%;
+    }
+    .white-button-slider a {
+        padding: 3px 6px 7px 5px;
+        font-size: 7px;
+        font-weight: 500;
+    }
+    .carousel .carousel-indicators {
+        bottom: -24px;
+    }
+    .playpause {
+        top: 23%;
+    }
+    .border-right {
+        border-right: 0px !important;
+    }
+    .brands_next {
+        left: 33%;
+    }
+    .tab-content {
+        height: auto;
+    }
+    nav>div a.nav-item.nav-link.active:after {
+        display: none;
+    }
+    .hidden-xs {
+        display: none !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .about_text p {
+        line-height: 26px;
+        margin-bottom: 12px;
+        margin-top: 10px;
+        font-size: 13px;
+        text-align: justify;
+    }
+    b,
+    strong {
+        font-size: 13px;
+    }
+    .mission-section .content-box .text {
+        font-size: 13px;
+    }
+    .mission-section .content-box h4 {
+        font-size: 15px;
+    }
+    .btn-primary {
+        font-size: 14px;
+    }
+    .inner-column.mission-section.miss-visi-outer-box {
+        padding: 25px 0;
+    }
+    .sec-title h2 {
+        padding-bottom: 0px;
+    }
+    .table td {
+        font-size: 13px;
+    }
+    .brands_pause {
+        left: 93px;
+    }
+    .brands_next {
+        left: 40%;
+    }
+    .title-line-8-a {
+        width: 100%;
+    }
+    .about-li ul li {
+        line-height: 36px;
+        font-size: 13px;
+    }
+    #cssmenu>ul>li.has-sub>a:before {
+        position: absolute;
+        top: 13px;
+        right: 14px;
+        display: block;
+        width: 2px;
+        height: 8px;
+        background: #f2f2f2;
+        content: '';
+        -webkit-transition: all .25s ease;
+        -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+        -o-transition: all .25s ease;
+        transition: all .25s ease;
+    }
+    #cssmenu>ul>li.has-sub:hover>a:before {
+        top: 23px;
+        height: 0;
+        background-color: #ccc;
+    }
+    #cssmenu>ul>li:hover>a {
+        color: #333;
+        background: #f2f2f2;
+    }
+    .nduw_mobile h5 {
+        font-size: 8px;
+        line-height: 12px;
+    }
+    .uan_number p {
+        font-size: 10px;
+    }
+    /* .Ayushman_logo h3 {
+    left: 55px;
+    top: 0;
+    font-size: 18px;
+    font-weight:bolder;
+} */
+    /* .Ayushman_logo h6 {
+   
+    font-size: 12px;
+    text-align: left;
+    left:50px;
+} */
+    .text-box-right h4 {
+        font-weight: 400;
+        /* color: #064b92; */
+        color: #000;
+        font-size: 17px;
+        margin-top: 17px;
+    }
+    .title-line-8 {
+        width: 100%;
+        height: 2px;
+        padding: 0px;
+        margin: 10px 0px;
+        background-color: #0b0bef;
+    }
+    .analytics ul li {
+        font-size: 13px;
+        line-height: 44px;
+        border-bottom: 1px solid #ccc;
+    }
+    .what-new ul li a {
+        font-size: 13px;
+    }
+    .registration_text>ul>li a {
+        font-size: 13px;
+    }
+    .tab-content {
+        width: auto;
+    }
+    .mb-0,
+    .my-0 {
+        background-color: #000066;
+        padding: 12px;
+        border-bottom: 2px white;
+        color: white;
+        font-size: 14px;
+    }
+    .market-update-block h4 {
+        font-size: 1em;
+        color: #fff;
+        margin: 0.3em 0em;
+        font-family: 'Carrois Gothic', sans-serif;
+    }
+    .footer_menu ul li a {
+        font-size: 13px;
+    }
+    #sub-footer {
+        text-shadow: none;
+        padding: 0;
+        height: 70px;
+        line-height: 20px;
+        /* margin: 20px 0 0 0; */
+    }
+    #last_updated_date {
+        color: #dedede;
+        padding-left: 10px;
+    }
+    .ipad_set {
+        left: 8px;
+        position: relative;
+        width: 96%;
+    }
+    .user-rating-list ul .excellent-star,
+    .user-rating-list ul .V-good-star,
+    .user-rating-list ul .good-star,
+    .user-rating-list ul .average-star,
+    .user-rating-list ul .poor-star {
+        padding: 0px 15px;
+        font-size: 20px;
+    }
+    .user-rating-list ul .excellent a,
+    .user-rating-list ul .V-good a,
+    .user-rating-list ul .good a,
+    .user-rating-list ul .average a,
+    .user-rating-list ul .poor a {
+        font-size: 10px;
+    }
+    #cssmenu ul ul .submenu-button:before {
+        top: 12px;
+        right: 16px;
+    }
+    #cssmenu .submenu-button.submenu-opened:before {
+        display: none;
+    }
+}

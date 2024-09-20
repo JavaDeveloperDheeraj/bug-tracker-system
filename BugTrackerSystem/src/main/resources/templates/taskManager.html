@@ -1,0 +1,122 @@
+<th:block xmlns:th="https://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div th:fragment="taskManager">	
+<section id="main-content">
+<script type="text/javascript" th:src="@{ctrl/taskManagerCtrl.js}"></script>
+
+
+		<div class="container-fluid mt-1" data-ng-app="taskManager" style="min-height: 460px" data-ng-controller="taskManagerCtrl">
+		
+		    <div class="container mt-5">
+		        <div class="card">
+		            <div class="card-header">
+		                <h4 class="mb-0">Enter Issue Details :</h4>
+		            </div>
+		         <div class="card-body">
+		    <form name="issueForm" novalidate data-ng-submit="formCtrl.validateAndSubmit(issueForm)" enctype="application/json">
+		   
+		    <!-- Category Field -->
+		    <div class="form-group">
+		        <label for="category">Category</label>
+		        <select class="form-control" id="category" name="category" 
+		                data-ng-model="formCtrl.issue.category" data-ng-required="true"
+		                data-ng-options="category for category in formCtrl.categoryOptions">
+		            <option value="">Select an option</option>
+		        </select>
+		        <div class="text-danger" data-ng-show="issueForm.category.$touched && issueForm.category.$invalid">
+		            Category is required.
+		        </div>
+		    </div>
+		
+		    <!-- Severity Field -->
+			 <div class="form-group">
+			    <label for="severity">Severity</label>
+			    <select class="form-control" id="severity" name="severity" 
+			            data-ng-model="formCtrl.issue.severity" data-ng-required="true"
+			            data-ng-options="severity for severity in formCtrl.severityOptions">
+			        <option value="">Select an option</option>
+			    </select>
+			    <div class="text-danger" data-ng-show="issueForm.severity.$touched && issueForm.severity.$invalid">
+			        Severity is required.
+			    </div>
+			</div>
+		
+		    <!-- Reproducibility Field -->
+		    <div class="form-group">
+		        <label for="reproducibility">Reproducibility</label>
+		        <select class="form-control" id="reproducibility" name="reproducibility" 
+		                data-ng-model="formCtrl.issue.reproducibility" data-ng-required="true"
+		                data-ng-options="reproducibility for reproducibility in formCtrl.reproducibilityOptions">
+		            <option value="">Select an option</option>
+		        </select>
+		        <div class="text-danger" data-ng-show="issueForm.reproducibility.$touched && issueForm.reproducibility.$invalid">
+		            Reproducibility is required.
+		        </div>
+		    </div>
+		
+		    <!-- Priority Field -->
+		    <div class="form-group">
+		        <label for="priority">Priority</label>
+		        <select class="form-control" id="priority" name="priority" 
+		                data-ng-model="formCtrl.issue.priority" data-ng-required="true"
+		                data-ng-options="priority for priority in formCtrl.priorityOptions">
+		            <option value="">Select an option</option>
+		        </select>
+		        <div class="text-danger" data-ng-show="issueForm.priority.$touched && issueForm.priority.$invalid">
+		            Priority is required.
+		        </div>
+		    </div>
+		
+		    <!-- Assign To Field -->
+		    <div class="form-group">
+		        <label for="assignTo">Assign To</label>
+		        <select class="form-control" id="assignTo" name="assignTo" 
+		                data-ng-model="formCtrl.issue.assignedTo" data-ng-required="true"
+		                data-ng-options="assignTo for assignTo in formCtrl.assignToOptions">
+		            <option value="">Select an option</option>
+		        </select>
+		        <div class="text-danger" data-ng-show="issueForm.assignTo.$touched && issueForm.assignTo.$invalid">
+		            Assign To is required.
+		        </div>
+		    </div>
+		
+		    <!-- Subject Field -->
+		    <div class="form-group">
+		        <label for="subject">Subject</label>
+		        <input type="text" class="form-control" id="ticketSubject" name="ticketSubject" 
+		               data-ng-model="formCtrl.issue.ticketSubject" maxlength="120" data-ng-required="true">
+		        <div class="text-danger" data-ng-show="issueForm.ticketSubject.$touched && issueForm.ticketSubject.$invalid">
+		            Subject is required.
+		        </div>
+		    </div>
+		
+		    <!-- Summary Field -->
+		    <div class="form-group">
+		        <label for="summary">Summary Details</label>
+		        <textarea class="form-control" id="ticketDescription" name="ticketDescription" 
+		                  data-ng-model="formCtrl.issue.ticketDescription" rows="4" maxlength="600" data-ng-required="true"></textarea>
+		        <div class="text-danger" data-ng-show="issueForm.ticketDescription.$touched && issueForm.ticketDescription.$invalid">
+		            Summary is required.
+		        </div>
+		    </div>
+		
+		   <!-- Attachment Field -->
+		   <div class="form-group">
+		       <label for="attachment">Attachment</label>
+		       <input type="file" class="form-control-file" id="attachment" name="attachment">
+		   </div>
+		
+		    <!-- Form Actions -->
+		    <div class="form-footer text-right">
+		        <button type="submit" class="btn btn-primary float-right">Submit</button>
+		    </div>
+		    </form>
+		</div>
+		</div>
+		<br><br>
+		</div>
+		</div>
+   </section>
+ </div>
+<br><br><br><br>
+</th:block>
