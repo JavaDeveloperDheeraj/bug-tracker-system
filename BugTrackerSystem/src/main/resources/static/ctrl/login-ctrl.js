@@ -24,7 +24,30 @@ app.controller('LoginCtrl', function($scope,$http) {
     username: '',
     password: ''
   };
-	$scope.userLogin = function() {
+  
+  // Define a function for login, perhaps inside a controller or a service
+$scope.userLogin = function() {
+    var authHeader = 'Basic ' + btoa($scope.user.userName + ':' + $scope.user.password);
+
+    // Using AngularJS $http service to make the POST request
+    $http({
+        method: 'POST',
+        url: '/BTS/app/login',
+        headers: {
+            'Authorization': authHeader
+        },
+        withCredentials: true // This ensures credentials (cookies, HTTP auth, etc.) are sent
+    }).then(function(response) {
+        // Success callback
+        console.log(response.data); // Handle the response data here
+    }, function(error) {
+        // Error callback
+        console.error('Error:', error);
+    });
+};
+
+  
+/*	$scope.userLogin = function() {
 		alert('inside the view');
 		
    var data = {
@@ -33,18 +56,15 @@ app.controller('LoginCtrl', function($scope,$http) {
     };
 	alert(data);
 	console.log(data);
-    var authHeader = btoa($scope.user.userName + ':' +$scope.user.password);
-		var username= $scope.user.userName;
-		var password= $scope.user.password;
    
-    alert('-------------into the view---------------');
 		
+var authHeader = 'Basic '+btoa($scope.user.userName + ':' +$scope.user.password);
     $http.post('/BTS/app/login', {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic ' + authHeader
+            'Authorization': authHeader
             
-        },data
+        }
     }).then(function(response) {
         alert('Login successfuly!');
         console.log(response);
@@ -52,7 +72,20 @@ app.controller('LoginCtrl', function($scope,$http) {
         alert('Login failed!');
         console.log(error);
     });
-};
+  /* var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+var authHeader = 'Basic '+btoa($scope.user.userName + ':' +$scope.user.password);
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "/BTS/app/login");
+xhr.setRequestHeader("Authorization", authHeader);
+
+xhr.send();
+};*/
 
 
 });
