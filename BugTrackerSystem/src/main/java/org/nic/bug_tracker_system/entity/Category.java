@@ -2,45 +2,32 @@ package org.nic.bug_tracker_system.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
-public class Staff {
+@Table(name = "category")
+public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String username;
+    private Integer categoryId;
+    private String categoryName;
     
-
-    private String password;
-
-    private String role;
-    
-    private String name;
-
-    private String designation;
-
+    @Column(name = "created_date")
     private LocalDateTime createdDatetime;
-
-    private LocalDateTime updatedDatetime;
-
-    private LocalDateTime deletedDatetime;
-
-    private String createdBy;
-
-    private String updatedBy;
-
-    private String deletedBy;
-
-    private Boolean flag;
     
-    private String mobile;
-  
+    @Column(name = "updated_date")
+    private LocalDateTime updatedDatetime;
+    
+    @Column(name = "deleted_date")
+    private LocalDateTime deletedDatetime;
+    
+    private String createdBy;
+    private String updatedBy;
+    private String deletedBy;
+    private Boolean flag;
 }

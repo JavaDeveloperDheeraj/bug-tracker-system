@@ -1,0 +1,169 @@
+<th:block xmlns:th="https://www.thymeleaf.org">
+  <div th:fragment="ticketRegister">
+  <th:head>
+  <style>
+		.file-drop-area {
+    border: 2px dashed #cccccc;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+
+.file-drop-area.dragging {
+    background-color: #e0e0e0;
+}
+
+.file-input {
+    display: none; /* Hide the default file input */
+}
+
+#file-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+		</style>
+  
+  </th:head>
+    <div data-ng-app="app" data-ng-controller="ticketRegister-ctrl">
+     
+		<h1>Ticket Register loaded</h1>
+		
+<!-- boarding starts here!! -->
+
+
+		
+		    <div class="container mt-5">
+		        <div class="card">
+		            <div class="card-header">
+		                <h4 class="mb-0">Enter Issue Details :</h4>
+		            </div>
+		         <div class="card-body">
+		    <form name="issueForm" novalidate data-ng-submit="formCtrl.validateAndSubmit(issueForm)" enctype="application/json">
+		   
+		    				<div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-control" id="category" name="category" data-ng-model="issue.category"
+                                    data-ng-required="true" data-ng-options="category.categoryName as category.categoryName for category in categories">
+                                    <option value="">Select an option</option>
+                                </select>
+                                <div class="text-danger" data-ng-show="issueForm.category.$touched && issueForm.category.$invalid">
+                                    Category is required.
+                                </div>
+                            </div>
+		
+			  				<div class="form-group">
+                                <label for="severity">Severity</label>
+                                <select class="form-control" id="severity" name="severity" data-ng-model="issue.severity"
+                                    data-ng-required="true" data-ng-options="severity.severityName as severity.severityName for severity in severities">
+                                    <option value="">Select an option</option>
+                                </select>
+                                <div class="text-danger" data-ng-show="issueForm.severity.$touched && issueForm.severity.$invalid">
+                                    Severity is required.
+                                </div>
+                            </div>
+		
+				<div class="form-group">
+				    <label for="reproducibility">Reproducibility</label>
+				    <select class="form-control" id="reproducibility" name="reproducibility" 
+				        data-ng-model="issue.reproducibility"
+				        data-ng-required="true" 
+				        data-ng-options="reproducibility.reproducibilityName as reproducibility.reproducibilityName for reproducibility in reproducibilites">
+				        <option value="">Select an option</option>
+				    </select>
+				    <div class="text-danger" data-ng-show="issueForm.reproducibility.$touched && issueForm.reproducibility.$invalid">
+				        Reproducibility is required.
+				    </div>
+				</div>
+
+                            
+                             <div class="form-group">
+                                <label for="priority">Priority</label>
+                                <select class="form-control" id="priority" name="priority" 
+                                data-ng-model="issue.priority"
+                                    data-ng-required="true" data-ng-options="priority.priorityName as priority.priorityName for priority in priorities">
+                                    <option value="">Select an option</option>
+                                </select>
+                                <div class="text-danger" data-ng-show="issueForm.priority.$touched && issueForm.priority.$invalid">
+                                    Priority is required.
+                                </div>
+                            </div>
+		
+		  
+		
+		    <div class="form-group">
+		        <label for="assignTo">Assign To</label>
+		        <select class="form-control" id="assignTo" name="assignedTo" 
+		                data-ng-model="issue.assignedTo" data-ng-required="true"
+		                data-ng-options="assignTo.developerName as assignTo.developerName for assignTo in assignTo">
+		            <option value="">Select an option</option>
+		        </select>
+		        <div class="text-danger" data-ng-show="issueForm.assignTo.$touched && issueForm.assignTo.$invalid">
+		            Assign To is required.
+		        </div>
+		    </div>
+		
+		    <!-- Subject Field -->
+		    <div class="form-group">
+		        <label for="subject">Subject</label>
+		        <input type="text" class="form-control" id="ticketSubject" name="ticketSubject" 
+		               data-ng-model="issue.ticketSubject" maxlength="120" data-ng-required="true">
+		        <div class="text-danger" data-ng-show="issueForm.ticketSubject.$touched && issueForm.ticketSubject.$invalid">
+		            Subject is required.
+		        </div>
+		    </div>
+		
+		    <!-- Summary Field -->
+		    <div class="form-group">
+		        <label for="summary">Summary Details</label>
+		        <textarea class="form-control" id="ticketDescription" name="ticketDescription" 
+		                  data-ng-model="issue.ticketDescription" rows="4" maxlength="600" data-ng-required="true"></textarea>
+		        <div class="text-danger" data-ng-show="issueForm.ticketDescription.$touched && issueForm.ticketDescription.$invalid">
+		            Summary is required.
+		        </div>
+		    </div>
+		
+		   <!-- Attachment Field -->
+		  <!-- Attachment Field with Drag-and-Drop Support -->
+              <div class="form-group">
+                <label for="attachment">Attachments</label>
+                <div id="drop-area" class="drop-area" data-ng-class="{'drop-hover': isDragging}" 
+                     data-ng-drop="true" data-ng-drop-success="onDrop($data)">
+                  <p>Drag and drop files here, or click to select files</p>
+                  <input type="file" id="attachment" name="attachment" multiple 
+                         class="form-control-file" style="display: none;"
+                         onchange="angular.element(this).scope().filesChanged()">
+                         
+                  <button type="button" class="btn btn-secondary" data-ng-click="triggerFileInput()">Browse Files</button>
+                </div>
+                
+                <div class="uploaded-files mt-2">
+                 
+                  <ul>
+                    <li data-ng-repeat="file in issue.attachments">
+                      {{ file.name }} 
+                      <button type="button" class="btn btn-danger btn-sm" 
+                              data-ng-click="removeFile(file.name)"style="padding: 2px 5px; font-size: 10px; line-height: 1;">x</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+		
+		    <!-- Form Actions -->
+		    <div class="form-footer text-right">
+		        <button type="submit" class="btn btn-primary float-right" data-ng-click="saveticketDetails()">Submit</button>
+		    </div>
+		    </form>
+		</div>
+		</div>
+		<br><br>
+		</div>
+
+<!-- boarding ends here!! -->
+
+
+  <script type="text/javascript" th:src="@{/ctrl/ticketRegister-ctrl.js}"></script>
+ 	 </div>
+ 	 </div>
+	</th:block>

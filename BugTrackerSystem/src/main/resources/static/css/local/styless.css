@@ -71,4 +71,23 @@
 }
 
 
+  .drop-area {
+        border: 5px dashed #ccc;
+        padding: 40px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .drop-area.drop-hover {
+        border-color: #007bff;
+        background-color: #f1f1f1;
+    }
+    .uploaded-files ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .uploaded-files li {
+        margin: 5px 0;
+    }
+    
+    
 

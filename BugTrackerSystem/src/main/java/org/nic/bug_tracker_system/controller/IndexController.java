@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
 	
-	
-	
 	@GetMapping("/")
     public String index(Model model) {
 		model.addAttribute("pageName", "index");
@@ -31,18 +29,12 @@ public class IndexController {
 		return "index";
     }
 	
-	/*
-	 * @GetMapping("/WelcomePage") public String WelcomePage(Model model) {
-	 * model.addAttribute("pageName", "WelcomePage");
-	 * model.addAttribute("section","WelcomePage") ; return "index"; }
-	 */
 	
-	@GetMapping("/WelcomePage")
+	@GetMapping("/welcome")
     public String showWelcomePage(Model model) {
-        model.addAttribute("isWelcomePage", true);
         model.addAttribute("pageName", "WelcomePage");
-		model.addAttribute("section","WelcomePage") ;// Pass a variable indicating it's the WelcomePage
-        return "index"; // The name of your welcome page template
+		model.addAttribute("section","WelcomePage") ;
+        return "index"; 
     }
 	
 
@@ -53,6 +45,12 @@ public class IndexController {
 		return "index";
     }
 	
+	@GetMapping("/ticketRegister")
+    public String TicketRegister(Model model) {
+		model.addAttribute("pageName", "ticketRegister");
+		model.addAttribute("section","ticketRegister") ;
+		return "index";
+    }
 	@GetMapping("/issueList")
     public String issueList(Model model) {
 		model.addAttribute("pageName", "issueList");

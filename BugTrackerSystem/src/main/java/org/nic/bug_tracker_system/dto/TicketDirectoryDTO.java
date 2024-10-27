@@ -19,13 +19,14 @@ public class TicketDirectoryDTO {
 	
     private StatusEnum status;
 	
-	private CategoryEnum category;
-
-	private SeverityEnum severity;
-	
-	private ReproducibilityEnum reproducibility;
-	
-	private PriorityEnum priority;
+//	private CategoryEnum category;
+    private String category;
+	//private SeverityEnum severity;
+	private String severity;
+	//private ReproducibilityEnum reproducibility;
+	private String reproducibility;
+	//private PriorityEnum priority;
+    private String priority;
 
 	private String assignedTo;
 	

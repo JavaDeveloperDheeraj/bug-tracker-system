@@ -34,32 +34,15 @@ public class MyConfig {
         return daoAuthenticationProvider;
     }
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//            .authorizeHttpRequests(authorize -> authorize
-//                .requestMatchers("/api/ticket/**", "/all").hasAnyRole("ADMIN", "DEVELOPER")
-//                .requestMatchers("/developer/**").hasRole("DEVELOPER")
-//                .requestMatchers("/assigner/**").hasRole("ASSIGNER")
-//                .requestMatchers("/**").permitAll()  // Allow all other requests
-//            )
-//            .formLogin(form -> form
-//                .loginPage("/login")  // Default login page
-//                .permitAll()
-//            )
-//            .httpBasic()  // Enable basic auth for Postman
-//            .and()
-//            .csrf().disable();  // Disable CSRF for Postman testing
-//
-//        return http.build();
-//    }
+
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/BTS/app/Login").permitAll()  // Allow login page
-                .requestMatchers("/api/ticket/**", "/all").hasAnyRole("ADMIN", "DEVELOPER")
+               // .requestMatchers("/api/ticket/**", "/all").hasAnyRole("ADMIN", "DEVELOPER")
+                .requestMatchers("/api/ticket/**", "/all").permitAll()
                 .requestMatchers("/developer/**").hasRole("DEVELOPER")
                 .requestMatchers("/assigner/**").hasRole("ASSIGNER")
                 .requestMatchers("/**").permitAll()  // Allow all other requests

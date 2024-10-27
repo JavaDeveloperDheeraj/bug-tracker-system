@@ -1,27 +1,301 @@
 <th:block xmlns:th="https://www.thymeleaf.org">
-  <!-- Define the WelcomePage Fragment -->
-  <div th:fragment="WelcomePage">
-  <div th:if="${session.user != null}" th:replace="::lPanel"></div>
-    <div data-ng-app="app" data-ng-controller="WelcomeCtrl">
-     <div class="container-fluid">
-        <div class="row">
-          <!-- Left Panel -->
-          <div th:if="${session.user != null}" class="col-md-3">
-              <div th:replace="::lPanel"></div>
-          </div>
-          
-          <!-- Main Content Area -->
-          <main class="col-md-9 content">
-            <h2>Welcome to the Dashboard</h2>
-            <p>Here is your personalized dashboard content...</p>
-          </main>
+    <div th:fragment="WelcomePage">
+        <div data-ng-app="app" data-ng-controller="welcomeCtrl">
+            <div class="container-fluid" style="min-height: 70vh;">
+                <div class="row">
+                    <main class="col-md-12 mt-4" >
+                        <h2 class="text-center" style="color: #1e90ff;">Welcome to the Dashboard</h2>
+                        <hr style="border-top: 2px solid #00bfff;">
+                    </main>
+
+                    <!-- Table displaying issue tickets -->
+                    <div class="container-fluid mt-4">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-striped text-center" style="font-size: 14px; background-color: #ffffff;">
+                                <thead style="background-color: #1e90ff; color: #ffffff;">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Ticket No</th>
+                                        <th>Category</th>
+                                        <th>Subject</th>
+                                        <th>Assigned To</th>
+                                        <th>Assigned Date & Time</th>
+                                        <th>Status</th>
+                                         <th>Actions</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="obj in data" class="ticket-row">
+                                        <td data-ng-bind="obj.id"></td>
+                                        <td data-ng-bind="obj.ticketNo"></td>
+                                        <td data-ng-bind="obj.category"></td>
+                                        <td data-ng-bind="obj.ticketSubject"></td>
+                                        <td data-ng-bind="obj.assignedTo"></td>
+                                        <td data-ng-bind="obj.assignedTime"></td>
+                                       
+                                         <td data-ng-bind="obj.status"></td>
+                                         <!-- <td>
+                                            <div data-ng-bind-html="getAttachmentsHtml(obj.attachments)"></div>
+                                        </td> -->
+                                        <td>
+                                            <button class="btn btn-info btn-sm" data-ng-click="showDetails(obj)" style="padding: 5px 10px;">View Details</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal for viewing details -->
+                    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #1e90ff; color: #fff;">
+                                    <h5 class="modal-title" id="detailsModalLabel">Ticket Details</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <!-- Left side details -->
+                                            <div class="col-md-6">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><strong>ID:</strong></td>
+                                                            <td>{{ selectedTicket.id }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Ticket No:</strong></td>
+                                                            <td>{{ selectedTicket.ticketNo }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Subject:</strong></td>
+                                                            <td>{{ selectedTicket.ticketSubject }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Assigned To:</strong></td>
+                                                            <td>{{ selectedTicket.assignedTo }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Assigned By:</strong></td>
+                                                            <td>{{ selectedTicket.assignedBy }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <!-- Right side details -->
+                                            <div class="col-md-6">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><strong>Status:</strong></td>
+                                                            <td>{{ selectedTicket.status }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Priority:</strong></td>
+                                                            <td>{{ selectedTicket.priority }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Severity:</strong></td>
+                                                            <td>{{ selectedTicket.severity }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Estimated Time:</strong></td>
+                                                            <td>{{ selectedTicket.estimatedTime }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Completion Date:</strong></td>
+                                                            <td>{{ selectedTicket.completionDatetime }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!-- Second row for additional info -->
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><strong>Reproducibility:</strong></td>
+                                                            <td>{{ selectedTicket.reproducibility }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Category:</strong></td>
+                                                            <td>{{ selectedTicket.category }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <table class="table table-borderless">
+                                                    <tbody>
+		                                                <tr>
+														    <td><strong>Attachments:</strong></td>
+														    <td>
+														       <div data-ng-bind-html="getAttachmentsHtml(selectedTicket.attachments)"></div>
+                                                            </td>
+	                                                 	</tr>
+
+                                                       
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!-- Ticket Description -->
+                                        <div class="row mt-3">
+                                            <div class="col-md-12">
+                                                <p><strong>Ticket Description:</strong></p>
+                                                <p>{{ selectedTicket.ticketDescription }}</p>
+                                            </div>
+                                        </div><br>
+                   
+										                    <!-- Previous Remarks Section -->
+										<div class="row mt-3">
+										    <div class="col-md-12">
+										        <h5 class="text-left" style="color: #1e90ff;">Previous Remarks</h5>
+										        <div class="table-responsive">
+										            <table class="table table-sm table-bordered text-center" style="font-size: 14px;">
+										                <thead style="background-color: #1e90ff; color: white;">
+										                    <tr>
+										                        <th>Remark</th>
+										                        <th>Image</th>
+										                        <th>Date & Time</th>
+										                        <th>Added By</th>
+										                    </tr>
+										                </thead>
+										                <tbody>
+										                    <tr>
+										                        <td>Initial analysis completed. Awaiting further inputs.</td>
+										                        <td>
+										                            <img src="https://via.placeholder.com/80" 
+										                                 alt="Remark Image 1" 
+										                                 class="img-fluid rounded shadow-sm">
+										                        </td>
+										                        <td>2024-10-20 10:30 AM</td>
+										                        <td>DEO Danapur </td>
+										                    </tr>
+										                    <tr>
+										                        <td>Reviewed ticket and assigned to developer.</td>
+										                        <td>
+										                            <div data-ng-bind-html="getAttachmentsHtml(selectedTicket.attachments)">
+										                              </div>   
+										                        </td>
+										                        <td>2024-10-21 09:15 AM</td>
+										                        <td>Admin</td>
+										                    </tr>
+										                    <tr>
+										                        <td>Follow-up discussion completed.</td>
+										                        <td>No Image</td>
+										                        <td>2024-10-21 02:00 PM</td>
+										                        <td>DEO Danapur</td>
+										                    </tr>
+										                </tbody>
+										            </table>
+										        </div>
+										    </div>
+										</div>
+                                        
+									                         <div class="form-group row mb-4">
+									    
+									    <div class="col-md-12">
+									        <!-- Textarea for Remarks -->
+									        <textarea class="form-control shadow-sm" data-ng-model="selectedTicket.remarksText" 
+									                  placeholder="Enter your remarks" rows="4" 
+									                  style="resize: none; border-radius: 10px; padding: 15px; font-size: 15px;"></textarea>
+									
+									        <!-- File Upload Field with Button -->
+									        <div class="d-flex align-items-center mt-3">
+									            <button class="btn btn-outline-primary btn-sm" style="border-radius: 50px;" 
+									                    onclick="document.getElementById('uploadImage').click()">
+									                <i class="fas fa-cloud-upload-alt"></i> Upload Image
+									            </button>
+									            <input id="uploadImage" type="file" class="d-none" 
+									                   onchange="angular.element(this).scope().uploadImage(this)">
+									
+									            <!-- Display selected file name -->
+									            <span class="ml-3 text-muted" 
+									                  data-ng-bind="selectedTicket.remarksImageName || 'No file selected'"></span>
+									        </div>
+									
+									        <!-- Image Preview -->
+									        <div class="mt-3" data-ng-if="selectedTicket.remarksImage">
+									            <img data-ng-src="{{ selectedTicket.remarksImage }}" 
+									                 alt="Uploaded Image Preview" 
+									                 class="img-fluid rounded shadow-sm" 
+									                 style="max-width: 120px; max-height: 120px;">
+									        </div>
+									
+									        <!-- Submit Remarks Button -->
+									        <div class="text-right mt-2">
+									            <button class="btn btn-success btn" style="border-radius: 05px; padding: 05px 10px;" 
+									                    data-ng-click="saveConversations(selectedTicket.ticketNo)">
+									                Submit Remarks
+									            </button>
+									        </div>
+									    </div>
+									</div>
+									
+									                                        
+                                    </div>
+                                </div>
+                               
+
+                                
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Ticket</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+							        <!-- Chat Button -->
+							<button class="btn btn-primary chat-btn" style="position: fixed; bottom: 20px; right: 20px; border-radius: 50%;" 
+							        data-ng-click="toggleChat()">💬</button>
+							
+							<!-- Chat Modal -->
+							<div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
+							    <div class="modal-dialog" role="document">
+							        <div class="modal-content">
+							            <div class="modal-header" style="background-color: #1e90ff; color: white;">
+							                <h5 class="modal-title" id="chatModalLabel">Support Chat</h5>
+							                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							                    <span aria-hidden="true">&times;</span>
+							                </button>
+							            </div>
+							            <div class="modal-body chat-window">
+							                <div class="chat-messages" style="max-height: 300px; overflow-y: auto;">
+							                    <div data-ng-repeat="msg in chatHistory" class="message" style="margin-bottom: 10px;">
+							                        <strong>{{ msg.user }}:</strong> <span>{{ msg.text }}</span>
+							                    </div>
+							                </div>
+							            </div>
+							            <div class="modal-footer">
+							                <input type="text" class="form-control" placeholder="Type a message..." 
+							                       data-ng-model="chatMessage" data-ng-keydown="$event.keyCode === 13 && sendMessage()">
+							                <button class="btn btn-success" data-ng-click="sendMessage()">Send</button>
+							            </div>
+							        </div>
+							    </div>
+							</div>
+
+<!-- External script -->
+<script type="text/javascript" th:src="@{/ctrl/welcome-ctrl.js}"></script>
+        
+                    <!-- External script -->
+                    <script type="text/javascript" th:src="@{/ctrl/welcome-ctrl.js}"></script>
+                </div>
+            </div>
         </div>
-      </div>
-    </div> 
-    <!-- Include AngularJS Controller -->
-    <script type="text/javascript" th:src="@{/ctrl/welcome-ctrl.js}"></script>
-  </div>
+    </div>
+
 </th:block>
-
-
-  
